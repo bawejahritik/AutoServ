@@ -1,7 +1,5 @@
 # AutoServ
 
-About the Project:
-
 AutoServ is a Automobile Service Management system which can be used to schedule a service, track the service and pay for the service. 
 
 Group Members: 
