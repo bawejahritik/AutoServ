@@ -27,7 +27,9 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/gallery_auto.js"
+            ]
           },
           "configurations": {
             "production": {
