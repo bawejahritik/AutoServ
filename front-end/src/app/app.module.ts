@@ -8,19 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
 
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatIconModule } from "@angular/material/icon";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { NavbarComponent } from './navbar/navbar.component';
-import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    GalleryComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,13 +26,13 @@ import { GalleryComponent } from './gallery/gallery.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
 
     HttpClientModule,
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
