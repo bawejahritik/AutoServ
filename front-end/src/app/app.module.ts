@@ -22,6 +22,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ServicesComponent } from './services/services.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppointmentFormComponent,
     LeftDisplayComponent,
     HomeComponent,
-    TrackComponent
+    TrackComponent,
+    ServicesComponent,
+    ContactUsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
