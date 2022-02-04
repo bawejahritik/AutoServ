@@ -1,0 +1,45 @@
+.container {
+    padding-top: 3rem;
+    width: 600px;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    height: 500px;
+}
+
+.heading {
+    font-size: 56px;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    line-height: 1;
+    
+}
+
+.headline {
+    color: 	#484848;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    padding-bottom: 2rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.button-row {
+    padding-top: 1rem;
+}
+
+.button-row .mat-button-base {
+    margin-right: 2rem;
+    align-items: center;
+}
+
+#Schedule {
+    width: 15rem;
+    height: 4rem;
+    font-size: 24px;
+}
+
+#Track {
+    width: 15rem;
+    height: 4rem;
+    font-size: 24px;
+}
