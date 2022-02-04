@@ -20,6 +20,14 @@ export class AppointmentFormComponent implements OnInit {
     appointmentDate:[''],
   })
 
+  submitForm() {
+    alert("Submitted")
+  }
+
+  onClear() {
+    this.serviceForm.reset();
+  }
+
   ngOnInit(): void {
   }
 
