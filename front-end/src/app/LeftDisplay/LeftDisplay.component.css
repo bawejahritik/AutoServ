@@ -3,8 +3,7 @@
     width: 600px;
     margin-top: 5rem;
     margin-left: 5rem;
-    height: 100%;
-    font-family: 'Roboto Condensed', sans-serif;
+    height: 500px;
 }
 
 .heading {
@@ -12,6 +11,7 @@
     font-weight: bold;
     padding-bottom: 0.5rem;
     line-height: 1;
+    
 }
 
 .headline {
@@ -20,6 +20,7 @@
     font-weight: bold;
     line-height: 1.2;
     padding-bottom: 2rem;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .button-row {

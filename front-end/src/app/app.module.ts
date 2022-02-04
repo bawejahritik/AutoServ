@@ -16,7 +16,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
-import { RightdisplayComponent } from './rightdisplay/rightdisplay.component';
+import { LeftDisplayComponent } from './LeftDisplay/LeftDisplay.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { RightdisplayComponent } from './rightdisplay/rightdisplay.component';
     NavbarComponent,
     GalleryComponent,
     AppointmentFormComponent,
-    RightdisplayComponent
+    LeftDisplayComponent
   ],
   imports: [
     BrowserModule,

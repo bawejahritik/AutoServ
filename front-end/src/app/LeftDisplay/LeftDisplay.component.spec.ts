@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RightdisplayComponent } from './rightdisplay.component';
+import { LeftDisplayComponent } from './LeftDisplay.component';
 
 describe('RightdisplayComponent', () => {
-  let component: RightdisplayComponent;
-  let fixture: ComponentFixture<RightdisplayComponent>;
+  let component: LeftDisplayComponent;
+  let fixture: ComponentFixture<LeftDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RightdisplayComponent ]
+      declarations: [ LeftDisplayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RightdisplayComponent);
+    fixture = TestBed.createComponent(LeftDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
