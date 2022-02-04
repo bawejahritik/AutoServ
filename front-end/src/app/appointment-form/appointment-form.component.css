@@ -1,0 +1,11 @@
+.full-width {
+    width: 100%;
+}
+
+.margin-left mat-radio-button {
+    margin-left: 1.5rem;
+}
+
+.form-container {
+    margin: 100px;
+}
