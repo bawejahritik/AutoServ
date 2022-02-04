@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { LeftDisplayComponent } from './LeftDisplay/LeftDisplay.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LeftDisplayComponent } from './LeftDisplay/LeftDisplay.component';
     NavbarComponent,
     GalleryComponent,
     AppointmentFormComponent,
-    LeftDisplayComponent
+    LeftDisplayComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
