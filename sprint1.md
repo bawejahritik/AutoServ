@@ -9,7 +9,18 @@ User stories:
 7.	As a user, I should be able to reschedule an appointment
 8.	As a user, i want to schedule a service(Appointment Booking)
 UI design:
-   
+  The appointment form :
+  <img src="https://github.com/bawejahritik/AutoServ/blob/main/UI/Appointment%20Booking%20Form.png">
+  
+  The main homepage:
+ <img src="https://github.com/bawejahritik/AutoServ/blob/main/UI/HomePage.png">
+ 
+ homepage image 2:
+ <img src= "https://github.com/bawejahritik/AutoServ/blob/main/UI/HomePage_V2.png ">
+ 
+ The Tracking page:
+<img src= "https://github.com/bawejahritik/AutoServ/blob/main/UI/Tracking.png">
+
  
  
  
