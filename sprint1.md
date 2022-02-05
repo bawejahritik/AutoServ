@@ -1,24 +1,24 @@
 # Sprint 1
 
-## User stories:
-1.	As a user, I want to look back at my service purchase history and also have functionality to rebook or buy again.
-2.	As a user, I want to get email notifications for my service updates
-3.	As a user, i want an online payment method with multiple payment options
-4.	As a user, I want to track my service progress and status.
-5.	As a user, I want car pickup and drop facility
-6.	As a user, I should be able to cancel a scheduled service appointment
-7.	As a user, I should be able to reschedule an appointment
-8.	As a user, i want to schedule a service(Appointment Booking)
+## User stories
+1.	Service History: As a user, I want to look back at my service purchase history and also have functionality to rebook or buy again.
+2.	Email Notifications: As a user, I want to get email notifications for my service updates
+3.	Flexible Payment Methods: As a user, i want an online payment method with multiple payment options
+4.	Service Status: As a user, I want to track my service progress and status.
+5.	Pickup and Drop: As a user, I want car pickup and drop facility
+6.	Cancel Appointment: As a user, I should be able to cancel a scheduled service appointment
+7.	Reschedule Appointment: As a user, I should be able to reschedule an appointment
+8.	Appointment Booking: As a user, i want to schedule a service(Appointment Booking)
 
-## UI design:
+## UI Design
 
 ### Appointment form
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/UI/Appointment%20Booking%20Form.png" style="width:600px;height:450px;">
   
-### Homepage:
+### Homepage
 <img src= "https://github.com/bawejahritik/AutoServ/blob/main/UI/HomePage_V2.png" style="width:600px;height:450px;">
  
-### Tracking page
+### Tracking Page
 <img src= "https://github.com/bawejahritik/AutoServ/blob/main/UI/Tracking.png" style="width:600px;height:450px;">
 
 Link to Jamboard: https://jamboard.google.com/d/16C0-aCpWdahX1h78SHSJIZL9Dw5H1KbxJU_rImTVPSg/edit?usp=sharing
