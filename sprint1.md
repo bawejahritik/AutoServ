@@ -44,27 +44,27 @@ Link to Jamboard: https://jamboard.google.com/d/16C0-aCpWdahX1h78SHSJIZL9Dw5H1Kb
 <p><img src="https://user-images.githubusercontent.com/42437530/152623476-c86bb886-9f87-4365-a683-06e043cc9fc4.png" alt="gallery" style="width:600px;height:450px;"></p>
 
 ### Schedule Component
-<p><em>Angular material form that takes input from user for fields - first name, last name, phone number, email, car registration number, service type and service date. Contains submit (to be configured in further sprints) and clear button. 
+<p><em>Angular material form that takes input from user for fields - first name, last name, phone number, email, car registration number, service type and service date. Contains submit (to be configured in further sprints) and clear button.</em> 
 <p><img src="https://user-images.githubusercontent.com/42437530/152623775-4c76d481-a31d-4c6d-a136-1501a268b763.png" alt="appointment-form"></p>
   
- #Back-end
+ # Back-end
  
  ### Database Connection
- <p><em>SQLite connection was established. GORM as an ORM engine was used.
+  <p><em>SQLite connection was established. GORM as an ORM engine was used.</em>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624515-feb6e26a-4d47-419f-9c19-383908505f13.png" alt="db-conn"></p>
    
  ### Hardcoded entry into Database
- <p><em>hardcoded entry was made to confirm Create in Database is successful or not.
+ <p><em>hardcoded entry was made to confirm Create in Database is successful or not.</em>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624516-b900f975-8cd7-42be-be33-3d1a9d4ad860.png" alt="db_create"></p>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624517-6956be3b-c139-4da7-86e4-febc1a33ae25.png" alt="db_entry"></p>
    
  ### User Entered entry into Database
- <p><em>entry was taken from the user (through CLI) and the entry was made to the database using Create.
+ <p><em>entry was taken from the user (through CLI) and the entry was made to the database using Create.</em>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624518-de30520a-bd51-4b8c-98a1-6d30514a8be5.png" alt="db_cli"></p>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624512-e7a922a5-9ac1-45fb-8900-9b5fec8220a0.png" alt="db_entry"></p>
  
  ### Entry to Database through POST
- <p><em> Using the POST method entry was made to the Database.
+ <p><em> Using the POST method entry was made to the Database.</em>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624513-142d41f5-3833-4f6c-a397-9ecdbb6aeb6c.png" alt="db_post"></p>
  <p><img src="https://user-images.githubusercontent.com/53797247/152624514-bba92f58-c293-4bc6-81c4-85e329a8146c.png" alt="db_entry"></p>
  
