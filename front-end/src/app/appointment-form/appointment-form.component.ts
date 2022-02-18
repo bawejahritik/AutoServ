@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-appointment-form',
@@ -23,7 +23,9 @@ export class AppointmentFormComponent {
   })
 
   submitForm() {
-    this.http.post('http://localhost:8080/stars', this.serviceForm.value)
+    const headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*')
+    //headers.append('content-type','application/x-www-form-urlencoded')
+    this.http.post('http://localhost:8080/stars', this.serviceForm.value).subscribe()
     console.log(this.serviceForm.value);
   }
 
