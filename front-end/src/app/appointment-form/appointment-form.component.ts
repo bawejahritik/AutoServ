@@ -23,7 +23,7 @@ export class AppointmentFormComponent {
   })
 
   submitForm() {
-    const headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*')
+    //const headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*')
     //headers.append('content-type','application/x-www-form-urlencoded')
     this.http.post('http://localhost:8080/stars', this.serviceForm.value).subscribe()
     console.log(this.serviceForm.value);
