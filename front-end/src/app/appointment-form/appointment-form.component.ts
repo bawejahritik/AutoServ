@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-appointment-form',
@@ -10,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AppointmentFormComponent {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(private formBuilder: FormBuilder, private form: FormService) {}
 
   serviceForm = this.formBuilder.group({
     firstName:['', Validators.required],
@@ -23,10 +22,9 @@ export class AppointmentFormComponent {
   })
 
   submitForm() {
-    //const headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*')
-    //headers.append('content-type','application/x-www-form-urlencoded')
-    this.http.post('http://localhost:8080/stars', this.serviceForm.value).subscribe()
-    console.log(this.serviceForm.value);
+    this.form.saveValues( this.serviceForm.value ).subscribe(result => {
+      console.log(result);
+    });
   }
 
   onClear() {
@@ -37,3 +35,4 @@ export class AppointmentFormComponent {
   }
 
 }
+
