@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -129,9 +131,20 @@ func main() {
 	fmt.Println("called handler")
 	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
 
-	http.Handle("/", r)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		panic(err)
-	}
+	// http.Handle("/", r)
+	// if err := http.ListenAndServe(":8080", nil); err != nil {
+	// 	panic(err)
+	// }
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:4200"},
+		AllowCredentials: true,
+		AllowedMethods:   []string{"GET", "DELETE", "POST", "PUT"},
+	})
+
+	handler := c.Handler(r)
+	log.Fatal(http.ListenAndServe(":8080", handler))
+
+	//log.Fatal(http.ListenAndServe(":8080", handlers.CORS(handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD"}), handlers.AllowedOrigins([]string{"*"}))(r)))
 
 }
