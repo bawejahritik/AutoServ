@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
 	"net/url"
+	"strconv"
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
@@ -50,6 +52,7 @@ func (a *App) Initialize(dbDriver string, dbURI string) {
 		FirstName:          "test",
 		LastName:           "test",
 	})
+
 }
 
 func (a *App) handler(w http.ResponseWriter, r *http.Request) {
@@ -102,6 +105,9 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 		AppointmentDate:    r.PostFormValue("appointmentDate"),
 		TrackingID:         "1234567890",
 	}
+
+	v := rand.Intn(9999999999-1000000000) + 1000000000
+	star.TrackingID = strconv.Itoa(v)
 	a.DB.Create(star)
 	fmt.Println("Initiated ", star.FirstName)
 
@@ -127,15 +133,6 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/", a.handler)
-	fmt.Println("called handler")
-	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
-
-	// http.Handle("/", r)
-	// if err := http.ListenAndServe(":8080", nil); err != nil {
-	// 	panic(err)
-	// }
-
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:4200"},
 		AllowCredentials: true,
@@ -143,7 +140,17 @@ func main() {
 	})
 
 	handler := c.Handler(r)
+
+	r.HandleFunc("/", a.handler)
+	fmt.Println("called handler")
+	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
+
 	log.Fatal(http.ListenAndServe(":8080", handler))
+
+	// http.Handle("/", r)
+	// if err := http.ListenAndServe(":8080", nil); err != nil {
+	// 	panic(err)
+	// }
 
 	//log.Fatal(http.ListenAndServe(":8080", handlers.CORS(handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD"}), handlers.AllowedOrigins([]string{"*"}))(r)))
 
