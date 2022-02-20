@@ -121,6 +121,7 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 		TrackingID:         "1234567890",
 	}
 
+	//generating trackingID
 	v := rand.Intn(9999999999-1000000000) + 1000000000
 	star.TrackingID = strconv.Itoa(v)
 	a.DB.Create(star)
