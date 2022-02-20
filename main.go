@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"math/rand"
@@ -86,23 +87,37 @@ func (a *App) handler(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 	// Parse the POST body to populate r.PostForm.
+	w.Header().Set("Content-Type", "application/json")
 
 	if err := r.ParseForm(); err != nil {
 		panic("failed in ParseForm() call")
 	}
 
 	fmt.Println("inside create")
+	var input ClientDetails
+
+	// // decode input or return error
+	err := json.NewDecoder(r.Body).Decode(&input)
+	if err != nil {
+		w.WriteHeader(400)
+		fmt.Println(w, "Decode error! please check your JSON formating.")
+		return
+	}
+
+	// // print user inputs
+	fmt.Println(w, "Inputed name: %s", input.FirstName)
+	fmt.Println(input)
 
 	// Create a new star from the request body.
 	star := &ClientDetails{
 		URL:                "http://localhost:8080/",
-		FirstName:          r.PostFormValue("firstName"),
-		LastName:           r.PostFormValue("lastName"),
-		PhoneNumber:        r.PostFormValue("phoneNumber"),
-		Email:              r.PostFormValue("email"),
-		RegistrationNumber: r.PostFormValue("registrationNumber"),
-		ServiceType:        r.PostFormValue("serviceType"),
-		AppointmentDate:    r.PostFormValue("appointmentDate"),
+		FirstName:          input.FirstName,
+		LastName:           input.LastName,
+		PhoneNumber:        input.PhoneNumber,
+		Email:              input.Email,
+		RegistrationNumber: input.RegistrationNumber,
+		ServiceType:        input.ServiceType,
+		AppointmentDate:    input.AppointmentDate,
 		TrackingID:         "1234567890",
 	}
 
