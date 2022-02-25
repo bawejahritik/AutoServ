@@ -31,15 +31,15 @@
                     </mat-form-field>
                 </div>
                 <div>
-
-                    <label>Service Type </label>
+                    <label>Service Type</label>
                     <mat-radio-group  formControlName="serviceType" class="margin-left">
                         <mat-radio-button value="interim"> Interim </mat-radio-button>
                         <mat-radio-button value="full"> Full</mat-radio-button>
                         <mat-radio-button value="major"> Major </mat-radio-button>
-                        <span title="Check the Services in Navigation bar.">.                        Need Help? </span>
                     </mat-radio-group>
+                    <a style="float: right; color: red;" routerLink="/Services" routerLinkActive="active"><i>Need Help?</i></a>
                 </div>
+                <br>
                 <div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Service Appointment Date</mat-label>
