@@ -1,0 +1,23 @@
+.full-width {
+    width: 60%;
+}
+
+.form-container {
+    margin: auto;
+    margin-top: 220px;
+    width: 60%;
+}
+
+.trackInput {
+    width: 100%;
+    height: 2rem;
+    font-size: 14px;
+}
+
+.submitButton {
+    width: 100%;
+    height: 3rem;
+    font-size: 20px;
+}
+
+
