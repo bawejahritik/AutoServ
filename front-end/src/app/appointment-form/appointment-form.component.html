@@ -5,6 +5,9 @@
         </mat-card-header>
         <mat-card-content>
             <div>
+                <div *ngIf="alert" class="confirmation">
+                    <strong>Success!</strong> You appointment has been booked successfully. Transaction ID: 
+                </div>
                 <div>
                     <mat-form-field class="full-width">
                         <input formControlName="firstName" matInput placeholder="First name">
