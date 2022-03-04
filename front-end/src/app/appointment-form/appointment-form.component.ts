@@ -10,7 +10,7 @@ import { FormService } from '../form.service';
 export class AppointmentFormComponent {
 
   constructor(private formBuilder: FormBuilder, private form: FormService) {}
-
+  alert:boolean=false;
   serviceForm = this.formBuilder.group({
     firstName:['', Validators.required],
     lastName:[''],
@@ -23,7 +23,8 @@ export class AppointmentFormComponent {
 
   submitForm() {
     this.form.saveValues( this.serviceForm.value ).subscribe(result => {
-      console.log(result); 
+      console.log(result);
+      this.alert=true; 
     });
     
   }
