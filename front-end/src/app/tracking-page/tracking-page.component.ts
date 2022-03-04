@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackingPageComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  events: any[];
+  ngOnInit() {
+    this.events = [
+      { content: 'Service Booked', date: '03/03/2022 5:30', status: 'R' },
+      { content: 'Vehicle Servicing', date: '03/03/2022 5:30', status: 'R' },
+      { content: 'Vehicle Washing' },
+      { content: 'Service Complete' },
+    ]
   }
+
+  constructor() { }
 
 }

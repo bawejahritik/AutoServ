@@ -26,6 +26,7 @@ import { ServicesComponent } from './services/services.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
     ServicesComponent,
     ContactUsComponent,
     LoginComponent,
-    TrackingPageComponent
+    TrackingPageComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
