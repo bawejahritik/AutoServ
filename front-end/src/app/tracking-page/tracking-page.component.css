@@ -27,3 +27,15 @@
     background-image: url("/assets/images/card-avatar.png");
     background-size: cover;
 }
+
+#Reschedule {
+    width: 12rem;
+    height: 3rem;
+    font-size: 18px;
+}
+
+#Cancel {
+    width: 12rem;
+    height: 3rem;
+    font-size: 18px;
+}
