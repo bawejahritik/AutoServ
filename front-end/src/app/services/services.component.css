@@ -15,23 +15,28 @@ body {
     float: left;
     width: 31%;
     margin-bottom: 20px;
-    padding: 0 8px;
+    padding: 0 0px;
+    min-height: 200px;
+    max-height: 100px;
   }
   
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 6px;
+    min-height: max-content;
   }
   
   .about-section {
-    padding: 5px;
+    padding: 2px;
     text-align: center;
-    background-color: #6b80af;
-    color: rgb(241, 240, 245);
+    background-color: #3a5db8;
+    color: rgb(253, 253, 255);
+    
   }
   
   .container {
     padding: 0 16px;
+    min-height: 200px;
   }
   
   .container::after, .row::after {
@@ -44,25 +49,14 @@ body {
     color: grey;
   }
   
-  .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
+ 
+  .margin-left mat-radio-button {
+    margin-left: 1.5rem;
+}
+  
+@media screen and (max-width: 650px) {
+  .column {
     width: 100%;
+    display: block;
   }
-  
-  .button:hover {
-    background-color: #555;
-  }
-  
-  @media screen and (max-width: 650px) {
-    .column {
-      width: 100%;
-      display: block;
-    }
-  }
+}
