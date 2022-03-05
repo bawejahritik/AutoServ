@@ -11,6 +11,7 @@ export class AppointmentFormComponent {
 
   constructor(private formBuilder: FormBuilder, private form: FormService) {}
   alert:boolean=false;
+  trackID: any;
   serviceForm = this.formBuilder.group({
     firstName:['', Validators.required],
     lastName:[''],
@@ -22,8 +23,9 @@ export class AppointmentFormComponent {
   })
 
   submitForm() {
-    this.form.saveValues( this.serviceForm.value ).subscribe(result => {
-      console.log(result);
+    this.form.saveValues( this.serviceForm.value ).subscribe(res => {
+      this.trackID = res["trackingID"];
+      console.log('Tracking ID: ', res);
       this.alert=true;
     });
 
