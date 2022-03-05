@@ -24,9 +24,9 @@ export class AppointmentFormComponent {
   submitForm() {
     this.form.saveValues( this.serviceForm.value ).subscribe(result => {
       console.log(result);
-      this.alert=true; 
+      this.alert=true;
     });
-    
+
   }
 
   onClear() {
