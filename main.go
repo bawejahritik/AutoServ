@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+
 	"math/rand"
 	"net/http"
-	"net/url"
+
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -86,60 +87,49 @@ func (a *App) handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
-	// Parse the POST body to populate r.PostForm.
 	w.Header().Set("Content-Type", "application/json")
-
-	if err := r.ParseForm(); err != nil {
-		panic("failed in ParseForm() call")
-	}
-
-	fmt.Println("inside create")
-	var input ClientDetails
-
-	// // decode input or return error
-	err := json.NewDecoder(r.Body).Decode(&input)
+	var s ClientDetails
+	err := json.NewDecoder(r.Body).Decode(&s)
 	if err != nil {
-		w.WriteHeader(400)
-		fmt.Println(w, "Decode error! please check your JSON formating.")
+		sendErr(w, http.StatusBadRequest, err.Error())
 		return
 	}
 
-	// // print user inputs
-	fmt.Println(w, "Inputed name: %s", input.FirstName)
-	fmt.Println(input)
-
-	// Create a new star from the request body.
-	star := &ClientDetails{
-		URL:                "http://localhost:8080/",
-		FirstName:          input.FirstName,
-		LastName:           input.LastName,
-		PhoneNumber:        input.PhoneNumber,
-		Email:              input.Email,
-		RegistrationNumber: input.RegistrationNumber,
-		ServiceType:        input.ServiceType,
-		AppointmentDate:    input.AppointmentDate,
-		TrackingID:         "1234567890",
-	}
-
-	//generating trackingID
 	v := rand.Intn(9999999999-1000000000) + 1000000000
-	star.TrackingID = strconv.Itoa(v)
-	a.DB.Create(star)
-	fmt.Println("Initiated ", star.FirstName)
-
-	// Form the URL of the newly created star.
-	u, err := url.Parse(fmt.Sprintf("/ClientDetails/%s", star.FirstName))
+	s.TrackingID = strconv.Itoa(v)
+	a.DB.Save(&s)
+	resp := make(map[string]string)
+	resp["message"] = "Status Created"
+	resp["trackingID"] = s.TrackingID
+	jsonResp, err := json.Marshal(resp)
 	if err != nil {
-		panic("failed to form new Star URL")
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
 	}
-	base, err := url.Parse(r.URL.String())
-	if err != nil {
-		panic("failed to parse request URL")
-	}
+	w.Write(jsonResp)
+}
 
-	// Write to HTTP response.
-	w.Header().Set("Location", base.ResolveReference(u).String())
-	w.WriteHeader(201)
+func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	temp := r.URL.Query().Get("trackingID")
+	fmt.Println(temp)
+	var all []ClientDetails
+	//err := a.DB.Find(&temp).Error
+	err := a.DB.Where("TrackingID" == temp).Error
+	fmt.Println(a.DB.Find(&temp).Error)
+	fmt.Println(a.DB.Where("tracking_id" == temp))
+	if err != nil {
+		sendErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	err = json.NewEncoder(w).Encode(all)
+	if err != nil {
+		sendErr(w, http.StatusInternalServerError, err.Error())
+	}
+}
+
+func sendErr(w http.ResponseWriter, code int, message string) {
+	resp, _ := json.Marshal(map[string]string{"error": message})
+	http.Error(w, string(resp), code)
 }
 
 func main() {
@@ -150,7 +140,7 @@ func main() {
 	r := mux.NewRouter()
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:4200"},
+		AllowedOrigins:   []string{"http://localhost:4200", "http://localhost:4200/AppointmentForm"},
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "DELETE", "POST", "PUT"},
 	})
@@ -160,14 +150,8 @@ func main() {
 	r.HandleFunc("/", a.handler)
 	fmt.Println("called handler")
 	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
+	r.HandleFunc("/getClient", a.getClient).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080", handler))
-
-	// http.Handle("/", r)
-	// if err := http.ListenAndServe(":8080", nil); err != nil {
-	// 	panic(err)
-	// }
-
-	//log.Fatal(http.ListenAndServe(":8080", handlers.CORS(handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD"}), handlers.AllowedOrigins([]string{"*"}))(r)))
 
 }
