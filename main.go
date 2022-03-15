@@ -112,19 +112,27 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	temp := r.URL.Query().Get("trackingID")
 	fmt.Println(temp)
-	var all []ClientDetails
+	var client ClientDetails
 	//err := a.DB.Find(&temp).Error
-	err := a.DB.Where("TrackingID" == temp).Error
-	fmt.Println(a.DB.Find(&temp).Error)
-	fmt.Println(a.DB.Where("tracking_id" == temp))
+	a.DB.Where("tracking_id = ?", temp).First(&client)
+	//fmt.Println(a.DB.Where("tracking_id = ?", temp).First(&ClientDetails{}))
+	fmt.Println(client.FirstName)
+
+	resp := make(map[string]string)
+	resp["firstname"] = client.FirstName
+	resp["lastname"] = client.LastName
+	resp["phone_number"] = client.PhoneNumber
+	resp["email"] = client.Email
+	resp["registration_number"] = client.RegistrationNumber
+	resp["service_type"] = client.ServiceType
+	resp["appointment_date"] = client.AppointmentDate
+
+	jsonResp, err := json.Marshal(resp)
 	if err != nil {
-		sendErr(w, http.StatusInternalServerError, err.Error())
-		return
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
 	}
-	err = json.NewEncoder(w).Encode(all)
-	if err != nil {
-		sendErr(w, http.StatusInternalServerError, err.Error())
-	}
+	w.Write(jsonResp)
+
 }
 
 func sendErr(w http.ResponseWriter, code int, message string) {
