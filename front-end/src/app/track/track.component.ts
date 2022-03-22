@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { FormService } from '../form.service';
 
 @Component({
@@ -8,10 +9,13 @@ import { FormService } from '../form.service';
 })
 export class TrackComponent {
 
-  constructor(private form: FormService) {}
+  constructor(private formBuilder: FormBuilder, private form: FormService) {}
+  trackForm = this.formBuilder.group({
+    TrackingID: ['', Validators.required]
+  })
 
   getTrack() {
-    this.form.getValues().subscribe(res => {
+    this.form.getValues( this.trackForm.get('TrackingID').value ).subscribe(res => {
       console.log(res);
     });
   }

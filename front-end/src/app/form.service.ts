@@ -16,10 +16,11 @@ export class FormService {
     return this.http.post<any>(this.url, JSON.stringify(data), options)
   }
 
-  getValues() {
+  getValues(data:any) {
+    console.log(data)
     const httpParams = new HttpParams ({
       fromObject: {
-        trackingID: '123456'
+        trackingID: data
       }
     })
     return this.http.get('http://localhost:8080/getClient', {params: httpParams});
