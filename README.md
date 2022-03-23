@@ -18,6 +18,18 @@ AutoServ is a user-friendly Automobile Service Management system which provides 
 | Raghav Soni | raghavsoni114 |
 | Amisha Singhal | amisinghal |
 
+<dl>
+  <dt>FrontEnd</dt>
+  <dd>
+    <li>Raghav Soni</li>
+    <li>Amisha Singhal</li>
+  </dd>
+  <dt>BackEnd</dt>
+  <dd>
+    <li>Hritik Baweja</li>
+  </dd>
+</dl>
+ 
 ## Tech Stack
 <ul>
   <li>Frontend: Angular 11</li>
