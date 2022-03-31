@@ -1,4 +1,4 @@
-<form class="form-container">
+<form [formGroup]="trackForm" class="form-container" (ngSubmit)="getTrack()">
     <mat-card>
         <h2>Service Tracking Number</h2>
         <mat-card-content>
@@ -7,8 +7,10 @@
             </div>
             <br>
             <mat-card-actions>
-                <button class="submitButton" mat-raised-button color="primary" routerLink="/Tracking-page">Track Your Service</button>
+                <button class="submitButton" mat-raised-button color="primary">Track Your Service</button>
             </mat-card-actions>
         </mat-card-content>
     </mat-card>
 </form>
+
+<!-- routerLink="/Tracking-page" -->
