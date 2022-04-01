@@ -55,5 +55,11 @@
 .heighlight {
     background-color: #1A237E;
     box-shadow: 0 4px 8px #8db8e4;
+}
 
+.pickdrop {
+    font-size: 18px;
+    padding: 1rem;
+    margin-left: 8rem;
+    margin-top: 1rem;
 }
