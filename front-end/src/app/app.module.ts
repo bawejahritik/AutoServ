@@ -27,6 +27,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     ContactUsComponent,
     LoginComponent,
     TrackingPageComponent,
-    TimelineComponent
+    TimelineComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     MatRadioModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule, 
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

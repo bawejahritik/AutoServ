@@ -1,4 +1,4 @@
-<form [formGroup]="serviceForm" class="form-container" (ngSubmit)="submitForm()">
+<form [formGroup]="serviceForm" class="form-container">
     <mat-card>
         <mat-card-header>
             <mat-card-title>Service Information</mat-card-title>
@@ -54,7 +54,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button id="submit" mat-raised-button color="primary">Submit</button>
+            <button  (click)="submitForm()" id="submit" mat-raised-button color="primary">Submit</button>
             <button (click)="onClear()" id="clear" mat-raised-button color="primary">Clear</button>
         </mat-card-actions>
     </mat-card>

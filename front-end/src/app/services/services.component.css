@@ -52,12 +52,9 @@ html {
 }
   
 .title {
-  color: grey;
+  color:#696969;
+  font-style: italic;
 }
-
-/* .margin-left mat-radio-button {
-  margin-left: 1.5rem;
-} */
   
 @media screen and (max-width: 650px) {
   .column {
