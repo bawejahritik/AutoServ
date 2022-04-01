@@ -54,7 +54,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button  (click)="submitForm()" id="submit" mat-raised-button color="primary">Submit</button>
+            <button  (click)="submitForm()" id="submit" mat-raised-button color="primary" [disabled]="!serviceForm.valid">Submit</button>
             <button (click)="onClear()" id="clear" mat-raised-button color="primary">Clear</button>
         </mat-card-actions>
     </mat-card>

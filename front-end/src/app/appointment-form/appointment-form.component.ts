@@ -14,12 +14,12 @@ export class AppointmentFormComponent {
   trackID: any;
   serviceForm = this.formBuilder.group({
     firstName:['', Validators.required],
-    lastName:[''],
-    phoneNumber:[''],
-    email:[''],
-    registrationNumber:[''],
-    serviceType:[''],
-    appointmentDate:[''],
+    lastName:['', Validators.required],
+    phoneNumber:['', Validators.required],
+    email:['', Validators.required],
+    registrationNumber:['', Validators.required],
+    serviceType:['', Validators.required],
+    appointmentDate:['', Validators.required],
   })
 
   submitForm() {
