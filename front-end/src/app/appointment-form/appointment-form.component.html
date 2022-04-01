@@ -10,43 +10,43 @@
                 </div>
                 <div>
                     <mat-form-field class="full-width">
-                        <input formControlName="firstName" matInput placeholder="First name">
+                        <input id="firstName" formControlName="firstName" matInput placeholder="First name">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="full-width">
-                        <input  formControlName="lastName" matInput placeholder="Last name">
+                        <input  id="lastName" formControlName="lastName" matInput placeholder="Last name">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="full-width">
-                        <input  formControlName="phoneNumber" matInput placeholder="Phone Number">
+                        <input  id="phoneNumber" formControlName="phoneNumber" matInput placeholder="Phone Number">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="full-width">
-                        <input  formControlName="email" matInput placeholder="Email">
+                        <input  id="email" formControlName="email" matInput placeholder="Email">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="full-width">
-                        <input  formControlName="registrationNumber" matInput placeholder="Registration Number">
+                        <input  id="registrationNumber" formControlName="registrationNumber" matInput placeholder="Registration Number">
                     </mat-form-field>
                 </div>
                 <div>
                     <label>Service Type</label>
-                    <mat-radio-group  formControlName="serviceType" class="margin-left">
-                        <mat-radio-button value="interim"> Interim </mat-radio-button>
-                        <mat-radio-button value="full"> Full</mat-radio-button>
-                        <mat-radio-button value="major"> Major </mat-radio-button>
+                    <mat-radio-group  id="serviceType" formControlName="serviceType" class="margin-left">
+                        <mat-radio-button id="interim" value="interim"> Interim </mat-radio-button>
+                        <mat-radio-button id="full" value="full"> Full</mat-radio-button>
+                        <mat-radio-button id="major" value="major"> Major </mat-radio-button>
                     </mat-radio-group>
-                    <a style="float: right; color: red;" routerLink="/Services" routerLinkActive="active"><i>Need Help?</i></a>
+                    <a style="float: right; color: red;" routerLink="/Services" routerLinkActive="active"id ="needHelp"><i>Need Help?</i></a>
                 </div>
                 <br>
                 <div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Service Appointment Date</mat-label>
-                        <input  formControlName="appointmentDate" matInput [matDatepicker]="picker">
+                        <input  id="date" formControlName="appointmentDate" matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -54,8 +54,8 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary">Submit</button>
-            <button (click)="onClear()" mat-raised-button color="primary">Clear</button>
+            <button id="submit" mat-raised-button color="primary">Submit</button>
+            <button (click)="onClear()" id="clear" mat-raised-button color="primary">Clear</button>
         </mat-card-actions>
     </mat-card>
 </form>
