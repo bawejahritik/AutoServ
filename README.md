@@ -14,6 +14,24 @@ AutoServ is a user-friendly Automobile Service Management system which provides 
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ServicePage.png">
 
+### Installation
+```
+//Project clone
+git clone https://github.com/bawejahritik/AutoServ.git
+
+//Install npm packages
+npm install
+npm start
+
+//Set up backend
+cd server
+go run main.go
+
+//Run frontend
+cd front-end
+ng serve --open
+```
+
 ## Contributors
 
 | Name | GitHub ID |
