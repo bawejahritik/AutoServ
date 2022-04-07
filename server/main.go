@@ -58,8 +58,6 @@ func (a *App) Initialize(dbDriver string, dbURI string) {
 }
 
 func (a *App) handler(w http.ResponseWriter, r *http.Request) {
-	// Create a test Star.
-	//a.DB.Create(&ClientDetails{FirstName: "test"})
 	fmt.Println("inside handler")
 
 	a.DB.Create(&ClientDetails{
@@ -73,17 +71,7 @@ func (a *App) handler(w http.ResponseWriter, r *http.Request) {
 		FirstName:          "test",
 		LastName:           "test",
 	})
-
-	// Read from DB.
-	//var contact ClientDetails
-	//a.DB.First(&contact, "FirstName = ?", "test")
-
-	// Write to HTTP response.
 	w.WriteHeader(200)
-	//w.Write([]byte(contact.FirstName))
-
-	// Delete.
-	//a.DB.Delete(&contact)
 }
 
 func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
@@ -115,9 +103,7 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	temp := r.URL.Query().Get("trackingID")
 	fmt.Println(temp)
 	var client ClientDetails
-	//err := a.DB.Find(&temp).Error
 	a.DB.Where("tracking_id = ?", temp).First(&client)
-	//fmt.Println(a.DB.Where("tracking_id = ?", temp).First(&ClientDetails{}))
 	fmt.Println(client.FirstName)
 
 	resp := make(map[string]string)
@@ -129,6 +115,33 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	resp["service_type"] = client.ServiceType
 	resp["appointment_date"] = client.AppointmentDate
 
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
+
+}
+
+func (a *App) deleteClient(w http.ResponseWriter, r *http.Request) {
+	trackingID := r.URL.Query().Get("trackingID")
+	fmt.Println(trackingID)
+
+	var client ClientDetails
+
+	err := a.DB.Where("tracking_id = ?", trackingID).Delete(&client).Error
+
+	if err != nil {
+		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	resp := make(map[string]string)
+	resp["message"] = "Status Deleted"
+	resp["trackingID"] = trackingID
+
+	w.WriteHeader(http.StatusAccepted)
 	jsonResp, err := json.Marshal(resp)
 	if err != nil {
 		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
@@ -161,6 +174,7 @@ func main() {
 	fmt.Println("called handler")
 	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
 	r.HandleFunc("/getClient", a.getClient).Methods("GET")
+	r.HandleFunc("/deleteClient", a.deleteClient).Methods("DELETE")
 
 	log.Fatal(http.ListenAndServe(":8080", handler))
 
