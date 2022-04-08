@@ -16,7 +16,7 @@ AutoServ is a user-friendly Automobile Service Management system which provides 
 
 ### Service Page
 
-<img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ServicePage.png">
+<img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ServicePage.png" height="348px" width="600px">
 
 ### Installation
 ```
