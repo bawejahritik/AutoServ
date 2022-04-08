@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"time"
 
 	"math/rand"
 	"net/http"
@@ -31,6 +32,8 @@ type ClientDetails struct {
 	TrackingID         string `json:"trackingID"`
 	FirstName          string `json:"firstName"`
 	LastName           string `json:"lastName"`
+	CreatedAt          time.Time
+	UpdatedAt          time.Time
 }
 
 func (a *App) Initialize(dbDriver string, dbURI string) {
@@ -43,35 +46,6 @@ func (a *App) Initialize(dbDriver string, dbURI string) {
 	// Migrate the schema.
 	a.DB.AutoMigrate(&ClientDetails{})
 	fmt.Println("initiated db")
-	a.DB.Create(&ClientDetails{
-		AppointmentDate:    "12th feb",
-		PhoneNumber:        "12345",
-		Email:              "test@email.com",
-		RegistrationNumber: "12345",
-		ServiceType:        "interim",
-		URL:                "test",
-		TrackingID:         "123456",
-		FirstName:          "test",
-		LastName:           "test",
-	})
-
-}
-
-func (a *App) handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("inside handler")
-
-	a.DB.Create(&ClientDetails{
-		AppointmentDate:    "13th feb",
-		PhoneNumber:        "12345",
-		Email:              "test@email.com",
-		RegistrationNumber: "12345",
-		ServiceType:        "interim",
-		URL:                "test",
-		TrackingID:         "123456",
-		FirstName:          "test",
-		LastName:           "test",
-	})
-	w.WriteHeader(200)
 }
 
 func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
@@ -85,6 +59,8 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 
 	v := rand.Intn(9999999999-1000000000) + 1000000000
 	s.TrackingID = strconv.Itoa(v)
+	s.CreatedAt = time.Now()
+	s.UpdatedAt = time.Now()
 	a.DB.Save(&s)
 	resp := make(map[string]string)
 	resp["message"] = "Status Created"
@@ -103,7 +79,14 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	temp := r.URL.Query().Get("trackingID")
 	fmt.Println(temp)
 	var client ClientDetails
-	a.DB.Where("tracking_id = ?", temp).First(&client)
+	err := a.DB.Where("tracking_id = ?", temp).First(&client).Error
+
+	if err != nil {
+		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	fmt.Println(client.FirstName)
 
 	resp := make(map[string]string)
@@ -115,6 +98,7 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	resp["service_type"] = client.ServiceType
 	resp["appointment_date"] = client.AppointmentDate
 	resp["tracking_id"] = client.TrackingID
+	resp["created_at"] = client.CreatedAt.String()
 
 	jsonResp, err := json.Marshal(resp)
 	if err != nil {
@@ -148,6 +132,34 @@ func (a *App) deleteClient(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
 	}
 	w.Write(jsonResp)
+}
+
+func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
+	trackingID := r.URL.Query().Get("trackingID")
+	appointmentDate := r.URL.Query().Get("appointmentDate")
+	fmt.Println(trackingID)
+	fmt.Println(appointmentDate)
+
+	var client ClientDetails
+
+	err := a.DB.Model(&client).Where("tracking_id = ?", trackingID).Update("appointment_date", appointmentDate).Error
+
+	if err != nil {
+		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	resp := make(map[string]string)
+	resp["message"] = "Status Updated"
+	resp["trackingID"] = trackingID
+
+	w.WriteHeader(http.StatusAccepted)
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
 
 }
 
@@ -171,11 +183,12 @@ func main() {
 
 	handler := c.Handler(r)
 
-	r.HandleFunc("/", a.handler)
-	fmt.Println("called handler")
+	//r.HandleFunc("/", a.handler)
+	//fmt.Println("called handler")
 	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
 	r.HandleFunc("/getClient", a.getClient).Methods("GET")
 	r.HandleFunc("/deleteClient", a.deleteClient).Methods("DELETE")
+	r.HandleFunc("/updateClient", a.updateClient).Methods("PUT")
 
 	log.Fatal(http.ListenAndServe(":8080", handler))
 
