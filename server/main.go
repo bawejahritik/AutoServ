@@ -114,6 +114,7 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	resp["registration_number"] = client.RegistrationNumber
 	resp["service_type"] = client.ServiceType
 	resp["appointment_date"] = client.AppointmentDate
+	resp["tracking_id"] = client.TrackingID
 
 	jsonResp, err := json.Marshal(resp)
 	if err != nil {
