@@ -12,7 +12,7 @@ export class RescheduleComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private form: FormService) { }
   alert:boolean=false;
   rescheduleForm = this.formBuilder.group({
-    serviceType: ['', Validators.required],
+    trackingID: ['', Validators.required],
     appointmentDate: ['', Validators.required]
   })
   

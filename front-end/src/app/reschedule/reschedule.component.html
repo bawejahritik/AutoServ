@@ -10,6 +10,11 @@
                 </div>
                 <br>
                 <div>
+                    <mat-form-field class="full-width">
+                        <input id="trackingID" formControlName="trackingID" matInput placeholder="TrackingID">
+                    </mat-form-field>
+                </div>
+                <div>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>New Service Appointment Date</mat-label>
                         <input  id="date" formControlName="appointmentDate" matInput [matDatepicker]="picker">
@@ -20,7 +25,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button  id="submit" mat-raised-button color="primary">Submit</button>
+            <button  (click)="reschedule()" id="submit" mat-raised-button color="primary">Submit</button>
             <button  id="clear" mat-raised-button color="primary">Clear</button>
         </mat-card-actions>
     </mat-card>
