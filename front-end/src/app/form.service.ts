@@ -30,9 +30,13 @@ export class FormService {
     console.log(data)
     const httpParams = new HttpParams ({
       fromObject: {
-        appointmentDate: data
+        rescheduleData: data
       }
     })
-    return this.http.put('http://localhost:8080/updateClient', {params: httpParams});
+    return this.http.put('http://localhost:8080/updateClient', {params: httpParams} );
+  }
+
+  cancelService() {
+    
   }
 }

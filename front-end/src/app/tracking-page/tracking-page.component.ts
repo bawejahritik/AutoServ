@@ -47,4 +47,8 @@ export class TrackingPageComponent implements OnInit {
     this.dialogref.open(RescheduleComponent)
   }
 
+  openCancel() {
+
+  }
+
 }
