@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { TransferServiceService } from '../transfer-service.service';
 
 @Component({
@@ -27,7 +29,7 @@ export class TrackingPageComponent implements OnInit {
     ]
   }
 
-  constructor(private transfer: TransferServiceService, private router: Router) { 
+  constructor(private transfer: TransferServiceService, private router: Router, private dialogref : MatDialog) { 
     if(this.data){
       console.log(this.data);
       this.firstName = this.data["firstname"];
@@ -39,6 +41,10 @@ export class TrackingPageComponent implements OnInit {
       this.serviceDate = this.data["appointment_date"];
       this.transactionID = this.data["tracking_id"];
     }
+  }
+
+  openReschedule(){
+    this.dialogref.open(RescheduleComponent)
   }
 
 }

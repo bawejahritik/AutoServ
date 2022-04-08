@@ -1,0 +1,27 @@
+<form [formGroup]="rescheduleForm" class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Reschedule Service</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <div *ngIf="alert" class="confirmation">
+                    <strong>Success!</strong> You appointment has been rescheduled.
+                </div>
+                <br>
+                <div>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>New Service Appointment Date</mat-label>
+                        <input  id="date" formControlName="appointmentDate" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button  id="submit" mat-raised-button color="primary">Submit</button>
+            <button  id="clear" mat-raised-button color="primary">Clear</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

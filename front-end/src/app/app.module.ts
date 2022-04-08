@@ -29,6 +29,7 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
+import { RescheduleComponent } from './reschedule/reschedule.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PaymentComponent } from './payment/payment.component';
     LoginComponent,
     TrackingPageComponent,
     TimelineComponent,
-    PaymentComponent
+    PaymentComponent,
+    RescheduleComponent
   ],
   imports: [
     BrowserModule,
