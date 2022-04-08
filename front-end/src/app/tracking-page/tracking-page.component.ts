@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { TransferServiceService } from '../transfer-service.service';
 
 @Component({
@@ -17,16 +19,17 @@ export class TrackingPageComponent implements OnInit {
   registration: any;
   serviceType: any;
   serviceDate: any;
+  transactionID: any;
   ngOnInit() {
     this.events = [
-      { content: 'Service Booked', date: '03/03/2022 5:30', status: 'R' },
+      { content: 'Service Booked', date: this.serviceDate, status: 'R' },
       { content: 'Vehicle Servicing', date: '03/03/2022 5:30', status: 'R' },
       { content: 'Vehicle Washing' },
       { content: 'Service Complete' },
     ]
   }
 
-  constructor(private transfer: TransferServiceService, private router: Router) { 
+  constructor(private transfer: TransferServiceService, private router: Router, private dialogref : MatDialog) { 
     if(this.data){
       console.log(this.data);
       this.firstName = this.data["firstname"];
@@ -36,7 +39,12 @@ export class TrackingPageComponent implements OnInit {
       this.registration = this.data["registration_number"];
       this.serviceType = this.data["service_type"];
       this.serviceDate = this.data["appointment_date"];
+      this.transactionID = this.data["tracking_id"];
     }
+  }
+
+  openReschedule(){
+    this.dialogref.open(RescheduleComponent)
   }
 
 }

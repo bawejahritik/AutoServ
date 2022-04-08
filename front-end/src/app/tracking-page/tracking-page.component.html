@@ -5,20 +5,20 @@
         <mat-card-header>
           <div mat-card-avatar class="header-image"></div>
           <mat-card-title style="font-size: 24px; font-weight: bold;">Booking Details</mat-card-title>
-          <mat-card-subtitle style="font-size: 18px; font-style: italic; padding-top: 0.5rem;">Tracking ID: </mat-card-subtitle>
+          <mat-card-subtitle style="font-size: 18px; font-style: italic; padding-top: 0.5rem;">Tracking ID: {{transactionID | json}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content style="font-size: 16px;">
-          <p>First Name:  {{firstName | json}} </p>
-          <p>Last Name: {{lastName | json}}     </p>
-          <p>Phone Number:  {{phoneNumber | json}}  </p>
-          <p>Email: {{email | json}}         </p>
-          <p>Registration Number: {{registration | json}}  </p>
-          <p>Service Type:  {{serviceType | json}}  </p>
+          <p>First Name:                {{firstName | json}}    </p>
+          <p>Last Name:                 {{lastName | json}}     </p>
+          <p>Phone Number:              {{phoneNumber | json}}  </p>
+          <p>Email:                     {{email | json}}        </p>
+          <p>Registration Number:       {{registration | json}} </p>
+          <p>Service Type:              {{serviceType | json}}  </p>
           <p>Service Appointment Date:  {{serviceDate | json}}  </p>
         </mat-card-content>
         <mat-card-actions>
           <mat-card-subtitle  style="font-size: 18px; font-style: italic;">Modify Service Appointment</mat-card-subtitle>
-          <button id="Reschedule" mat-raised-button color="primary">Reschedule Service</button>
+          <button (click)="openReschedule()" id="Reschedule" mat-raised-button color="primary">Reschedule Service</button>
           <button id="Cancel" mat-raised-button color="primary">Cancel Service</button>
       </mat-card-actions>
     </mat-card>

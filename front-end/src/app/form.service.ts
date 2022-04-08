@@ -25,4 +25,14 @@ export class FormService {
     })
     return this.http.get('http://localhost:8080/getClient', {params: httpParams});
   }
+
+  rescheduleValues(data: any) {
+    console.log(data)
+    const httpParams = new HttpParams ({
+      fromObject: {
+        appointmentDate: data
+      }
+    })
+    return this.http.put('http://localhost:8080/updateClient', {params: httpParams});
+  }
 }
