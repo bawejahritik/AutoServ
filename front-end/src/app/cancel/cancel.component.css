@@ -1,0 +1,25 @@
+.container {
+    padding: 0.5rem;
+}
+  
+.full-width {
+    width: 100%;
+}
+
+.margin-left mat-radio-button {
+    margin-left: 1.5rem;
+}
+
+
+.form-container {
+    margin: 2px;
+}
+
+.confirmation {
+    padding: 2px;
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 5px;
+    background-color: #32CD32;
+    margin-bottom: 1rem;
+}

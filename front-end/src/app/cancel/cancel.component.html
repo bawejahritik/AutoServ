@@ -1,0 +1,26 @@
+<form [formGroup]="cancelForm" class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Cancel Service</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <div *ngIf="alert" class="confirmation">
+                    <strong>Success!</strong> You appointment has been canceled.
+                </div>
+                <br>
+                <div>
+                    <mat-form-field class="full-width">
+                        <input id="trackingID" formControlName="trackingID" matInput placeholder="TrackingID">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <p><strong>Are you sure?</strong></p>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button  (click)="cancel()" id="submit" mat-raised-button color="primary">Yes, Cancel Service</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

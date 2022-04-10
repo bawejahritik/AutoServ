@@ -30,6 +30,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
 import { RescheduleComponent } from './reschedule/reschedule.component';
+import { CancelComponent } from './cancel/cancel.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RescheduleComponent } from './reschedule/reschedule.component';
     TrackingPageComponent,
     TimelineComponent,
     PaymentComponent,
-    RescheduleComponent
+    RescheduleComponent,
+    CancelComponent
   ],
   imports: [
     BrowserModule,

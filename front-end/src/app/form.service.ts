@@ -38,7 +38,13 @@ export class FormService {
     return this.http.put('http://localhost:8080/updateClient', data, options );
   }
 
-  cancelService() {
-    
+  cancelService(data) {
+    console.log(data)
+    const httpParams = new HttpParams ({
+      fromObject: {
+        trackingID: data
+      }
+    })
+    return this.http.delete('http://localhost:8080/deleteClient', {params: httpParams});
   }
 }

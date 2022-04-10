@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CancelComponent } from '../cancel/cancel.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { TransferServiceService } from '../transfer-service.service';
 
@@ -50,7 +51,7 @@ export class TrackingPageComponent implements OnInit {
   }
 
   openCancel() {
-
+    this.dialogref.open(CancelComponent)
   }
 
 }
