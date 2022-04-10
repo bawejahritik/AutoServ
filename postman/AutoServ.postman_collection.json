@@ -161,6 +161,15 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"trackingID\": \"4567446831\", \r\n    \"appointmentDate\": \"Tue Apr 19 2022 00:00:00 GMT-0400 (Eastern Daylight Time)\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/updateClient?trackingID=4567446831&appointmentDate=11th Novemeber",
 					"protocol": "http",

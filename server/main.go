@@ -29,7 +29,7 @@ type ClientDetails struct {
 	RegistrationNumber string `json:"registrationNumber"`
 	ServiceType        string `json:"serviceType"`
 	URL                string `json:"url"`
-	TrackingID         string `json:"trackingID"`
+	TrackingID         string `gorm:"uniqueIndex"`
 	FirstName          string `json:"firstName"`
 	LastName           string `json:"lastName"`
 	CreatedAt          time.Time
@@ -42,7 +42,6 @@ func (a *App) Initialize(dbDriver string, dbURI string) {
 		panic("failed to connect database")
 	}
 	a.DB = db
-
 	// Migrate the schema.
 	a.DB.AutoMigrate(&ClientDetails{})
 	fmt.Println("initiated db")
@@ -57,10 +56,21 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	v := rand.Intn(9999999999-1000000000) + 1000000000
-	s.TrackingID = strconv.Itoa(v)
+	x1 := rand.NewSource(time.Now().UnixNano())
+	y1 := rand.New(x1)
+
+	s.TrackingID = strconv.Itoa(y1.Intn(1000000000))
 	s.CreatedAt = time.Now()
 	s.UpdatedAt = time.Now()
+	fmt.Println("tracking", s.TrackingID)
+
+	e := a.DB.Where("tracking_id = ?", s.TrackingID).Error
+
+	for e == nil {
+		s.TrackingID = strconv.Itoa(y1.Intn(100000000000))
+		e = a.DB.Where("tracking_id = ?", s.TrackingID).Error
+	}
+
 	a.DB.Save(&s)
 	resp := make(map[string]string)
 	resp["message"] = "Status Created"
@@ -75,6 +85,9 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	fmt.Println("params", params)
 	w.Header().Set("Content-Type", "application/json")
 	temp := r.URL.Query().Get("trackingID")
 	fmt.Println(temp)
@@ -135,10 +148,26 @@ func (a *App) deleteClient(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+
+	fmt.Println("params", params)
+	fmt.Println("test", params["trackingID"])
+
 	trackingID := r.URL.Query().Get("trackingID")
 	appointmentDate := r.URL.Query().Get("appointmentDate")
-	fmt.Println(trackingID)
-	fmt.Println(appointmentDate)
+	test := r.URL.Query().Get("rescheduleData")
+	fmt.Println("tracking", trackingID)
+	fmt.Println("appointment", appointmentDate)
+	fmt.Println("test", test)
+
+	var s ClientDetails
+	e := json.NewDecoder(r.Body).Decode(&s)
+	if e != nil {
+		sendErr(w, http.StatusBadRequest, e.Error())
+		return
+	}
+
+	fmt.Println("body", s.AppointmentDate)
 
 	var client ClientDetails
 
