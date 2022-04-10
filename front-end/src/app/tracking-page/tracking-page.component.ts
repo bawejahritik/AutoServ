@@ -20,9 +20,10 @@ export class TrackingPageComponent implements OnInit {
   serviceType: any;
   serviceDate: any;
   transactionID: any;
+  createdAt: any;
   ngOnInit() {
     this.events = [
-      { content: 'Service Booked', date: this.serviceDate, status: 'R' },
+      { content: 'Service Booked', date: this.createdAt, status: 'R' },
       { content: 'Vehicle Servicing', date: '03/03/2022 5:30', status: 'R' },
       { content: 'Vehicle Washing' },
       { content: 'Service Complete' },
@@ -40,6 +41,7 @@ export class TrackingPageComponent implements OnInit {
       this.serviceType = this.data["service_type"];
       this.serviceDate = this.data["appointment_date"];
       this.transactionID = this.data["tracking_id"];
+      this.createdAt = this.data["created_at"]
     }
   }
 
