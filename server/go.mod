@@ -1,4 +1,4 @@
-module github.com/bawejahritik/AutoServ
+module github.com/bawejahritik/AutoServ/server
 
 go 1.17
 
@@ -14,5 +14,3 @@ require (
 	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/mattn/go-sqlite3 v1.14.9 // indirect
 )
-
-replace github.com/bawejahritik/AutoServ/app => ./App
