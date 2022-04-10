@@ -148,17 +148,6 @@ func (a *App) deleteClient(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-
-	fmt.Println("params", params)
-	fmt.Println("test", params["trackingID"])
-
-	trackingID := r.URL.Query().Get("trackingID")
-	appointmentDate := r.URL.Query().Get("appointmentDate")
-	test := r.URL.Query().Get("rescheduleData")
-	fmt.Println("tracking", trackingID)
-	fmt.Println("appointment", appointmentDate)
-	fmt.Println("test", test)
 
 	var s ClientDetails
 	e := json.NewDecoder(r.Body).Decode(&s)
@@ -168,10 +157,11 @@ func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("body", s.AppointmentDate)
+	fmt.Println("body tracking", s.TrackingID)
 
 	var client ClientDetails
 
-	err := a.DB.Model(&client).Where("tracking_id = ?", trackingID).Update("appointment_date", appointmentDate).Error
+	err := a.DB.Model(&client).Where("tracking_id = ?", s.TrackingID).Update("appointment_date", s.AppointmentDate).Error
 
 	if err != nil {
 		fmt.Println(err)
@@ -181,7 +171,7 @@ func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
 
 	resp := make(map[string]string)
 	resp["message"] = "Status Updated"
-	resp["trackingID"] = trackingID
+	resp["trackingID"] = s.TrackingID
 
 	w.WriteHeader(http.StatusAccepted)
 	jsonResp, err := json.Marshal(resp)
