@@ -29,7 +29,7 @@ type ClientDetails struct {
 	RegistrationNumber string `json:"registrationNumber"`
 	ServiceType        string `json:"serviceType"`
 	URL                string `json:"url"`
-	TrackingID         string `gorm:"uniqueIndex"`
+	TrackingID         string `json:"trackingID"`
 	FirstName          string `json:"firstName"`
 	LastName           string `json:"lastName"`
 	CreatedAt          time.Time
@@ -58,18 +58,10 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 
 	x1 := rand.NewSource(time.Now().UnixNano())
 	y1 := rand.New(x1)
-
 	s.TrackingID = strconv.Itoa(y1.Intn(1000000000))
 	s.CreatedAt = time.Now()
 	s.UpdatedAt = time.Now()
 	fmt.Println("tracking", s.TrackingID)
-
-	e := a.DB.Where("tracking_id = ?", s.TrackingID).Error
-
-	for e == nil {
-		s.TrackingID = strconv.Itoa(y1.Intn(100000000000))
-		e = a.DB.Where("tracking_id = ?", s.TrackingID).Error
-	}
 
 	a.DB.Save(&s)
 	resp := make(map[string]string)
@@ -202,8 +194,6 @@ func main() {
 
 	handler := c.Handler(r)
 
-	//r.HandleFunc("/", a.handler)
-	//fmt.Println("called handler")
 	r.HandleFunc("/stars", a.CreateHandler).Methods("POST")
 	r.HandleFunc("/getClient", a.getClient).Methods("GET")
 	r.HandleFunc("/deleteClient", a.deleteClient).Methods("DELETE")
