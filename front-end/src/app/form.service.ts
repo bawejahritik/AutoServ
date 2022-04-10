@@ -33,7 +33,9 @@ export class FormService {
         rescheduleData: data
       }
     })
-    return this.http.put('http://localhost:8080/updateClient', {params: httpParams} );
+    let headers = new HttpHeaders({'Content-Type' : 'application/json'});
+    let options = {headers: headers};
+    return this.http.put('http://localhost:8080/updateClient', data, options );
   }
 
   cancelService() {
