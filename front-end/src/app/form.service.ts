@@ -38,7 +38,7 @@ export class FormService {
     return this.http.put('http://localhost:8080/updateClient', data, options );
   }
 
-  cancelService(data) {
+  cancelService(data: any) {
     console.log(data)
     const httpParams = new HttpParams ({
       fromObject: {

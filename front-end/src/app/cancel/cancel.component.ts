@@ -16,7 +16,7 @@ export class CancelComponent implements OnInit {
   })
 
   cancel() {
-    this.form.cancelService( this.cancelForm.value ).subscribe(res => {
+    this.form.cancelService( this.cancelForm.get('trackingID').value ).subscribe(res => {
       console.log(res); 
       this.alert=true;
     });
