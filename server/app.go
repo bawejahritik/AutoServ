@@ -49,7 +49,13 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 	s.TrackingID = strconv.Itoa(y1.Intn(1000000000))
 	s.CreatedAt = time.Now()
 	s.UpdatedAt = time.Now()
+
+	min := 1
+	max := 5
+	temp := rand.Intn(max-min) + min
+	s.Status = strconv.Itoa(temp)
 	fmt.Println("tracking", s.TrackingID)
+	fmt.Println("status", s.Status)
 
 	a.DB.Save(&s)
 	resp := make(map[string]string)
@@ -65,9 +71,6 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
-
-	params := mux.Vars(r)
-	fmt.Println("params", params)
 	w.Header().Set("Content-Type", "application/json")
 	temp := r.URL.Query().Get("trackingID")
 	fmt.Println(temp)
@@ -77,6 +80,13 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
+		resp := make(map[string]string)
+		resp["error"] = "Tracking ID not found"
+		jsonResp, err := json.Marshal(resp)
+		if err != nil {
+			log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+		}
+		w.Write(jsonResp)
 		return
 	}
 
@@ -91,6 +101,7 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	resp["service_type"] = client.ServiceType
 	resp["appointment_date"] = client.AppointmentDate
 	resp["tracking_id"] = client.TrackingID
+	resp["status"] = client.Status
 	resp["created_at"] = client.CreatedAt.String()
 
 	jsonResp, err := json.Marshal(resp)
