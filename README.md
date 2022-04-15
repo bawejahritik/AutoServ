@@ -29,7 +29,7 @@ npm start
 
 //Set up backend
 cd server
-go run main.go
+start server.exe
 
 //Run frontend
 cd front-end
