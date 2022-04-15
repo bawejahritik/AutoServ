@@ -14,6 +14,14 @@ AutoServ is a user-friendly Automobile Service Management system which provides 
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/ServiceTracking.gif">
 
+### Service Rescheduling 
+
+<img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/RescheduleComponent_Demo.gif">
+
+### Service Cancelation 
+
+<img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/CancelComponent_Demo.gif">
+
 ### Service Page
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ServicePage.png" height="348px" width="600px">
