@@ -22,18 +22,56 @@ export class TrackingPageComponent implements OnInit {
   serviceDate: any;
   transactionID: any;
   createdAt: any;
+  status: any;
   ngOnInit() {
     this.events = [
-      { content: 'Service Booked', date: this.createdAt, status: 'R' },
-      { content: 'Vehicle Servicing', date: '03/03/2022 5:30', status: 'R' },
-      { content: 'Vehicle Washing' },
-      { content: 'Service Complete' },
+      { content: 'Service Booked' },
+      { content: 'Vehicle Servicing' },
+      { content: 'Vehicle Washing'},
+      { content: 'Service Complete'},
     ]
+
+    if (this.data['status']=='1')
+    { this.events = [
+        { content: 'Service Booked', date: this.createdAt, status: 'R' },
+        { content: 'Vehicle Servicing' },
+        { content: 'Vehicle Washing'},
+        { content: 'Service Complete'},
+      ]
+    }
+
+    else if (this.data['status']=='2')
+    { this.events = [
+        { content: 'Service Booked', date: this.createdAt, status: 'R' },
+        { content: 'Vehicle Servicing', status: 'R' },
+        { content: 'Vehicle Washing'},
+        { content: 'Service Complete'},
+      ]
+    }
+
+    else if (this.data['status']=='3')
+    { this.events = [
+        { content: 'Service Booked', date: this.createdAt, status: 'R' },
+        { content: 'Vehicle Servicing', status: 'R' },
+        { content: 'Vehicle Washing', status: 'R'},
+        { content: 'Service Complete'},
+      ]
+    }
+    
+    else
+    { this.events = [
+        { content: 'Service Booked', date: this.createdAt, status: 'R' },
+        { content: 'Vehicle Servicing', status: 'R' },
+        { content: 'Vehicle Washing', status: 'R'},
+        { content: 'Service Complete', status: 'R' },
+      ]
+    } 
   }
 
   constructor(private transfer: TransferServiceService, private router: Router, private dialogref : MatDialog) { 
     if(this.data){
       console.log(this.data);
+      console.log(this.data['status'])
       this.firstName = this.data["firstname"];
       this.lastName = this.data["lastname"];
       this.phoneNumber = this.data["phone_number"];
@@ -42,7 +80,7 @@ export class TrackingPageComponent implements OnInit {
       this.serviceType = this.data["service_type"];
       this.serviceDate = this.data["appointment_date"];
       this.transactionID = this.data["tracking_id"];
-      this.createdAt = this.data["created_at"]
+      this.createdAt = this.data["created_at"];
     }
   }
 
