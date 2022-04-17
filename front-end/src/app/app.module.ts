@@ -27,11 +27,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { TimelineComponent } from './timeline/timeline.component';
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { CancelComponent } from './cancel/cancel.component';
-import { RescheduleComponent } from './reschedule/reschedule.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
+import { RescheduleComponent } from './reschedule/reschedule.component';
+import { CancelComponent } from './cancel/cancel.component';
 
 @NgModule({
   declarations: [
@@ -47,10 +46,9 @@ import { PaymentComponent } from './payment/payment.component';
     LoginComponent,
     TrackingPageComponent,
     TimelineComponent,
-    SignUpComponent,
-    CancelComponent,
+    PaymentComponent,
     RescheduleComponent,
-    PaymentComponent
+    CancelComponent
   ],
   imports: [
     BrowserModule,
@@ -68,8 +66,8 @@ import { PaymentComponent } from './payment/payment.component';
     MatRadioModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    DropDownListModule 
+    MatNativeDateModule, 
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
