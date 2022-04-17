@@ -19,3 +19,31 @@
 <p><em>Front-end unit testing for appointment form and service component functionalities.</em></p>
   
 # Back-end
+
+# API 3: Cancelling a scheduled appointment
+## DELETE Request
+
+This API takes in the tracking ID of a user and deletes the appointment.
+
+## URL: http://localhost:8080/deleteClient?trackingID=4567446831
+
+### Sample Query Params:
+![image](https://user-images.githubusercontent.com/53797247/163731350-01e92f0d-c78a-4c95-b29b-833966e108bf.png)
+
+### Sample Response Body:
+![image](https://user-images.githubusercontent.com/53797247/163731379-4daf8f36-ba9c-4876-b07a-0734a6d6e11f.png)
+
+# API 4: Updating a scheduled appointment
+## PUT Request
+
+This API takes in the tracking ID and a new appointment date and updates in clientdetails table
+
+## URL: http://localhost:8080/updateClient?trackingID=4567446831&appointmentDate=11thNovemeber
+
+### Sample Request Body:
+![image](https://user-images.githubusercontent.com/53797247/163731528-e6c8790a-8801-4ff7-89a7-968d66bffea2.png)
+
+### Sample Response Body:
+![image](https://user-images.githubusercontent.com/53797247/163731614-428e50e8-06e5-49f4-888c-2edf9ac0b749.png)
+
+
