@@ -1,1 +1,24 @@
-<p>login works!</p>
+<form class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+                <div >
+                    <mat-form-field class="full-width">
+                        <input id="Username" formControlName="Username/Email" matInput placeholder="enter your Username/email">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="full-width">
+                        <input  id="password" formControlName="password" matInput placeholder="Enter your password">
+                    </mat-form-field>
+                </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button id="submit" mat-raised-button color="primary">Submit</button>
+            <button id="clear" mat-raised-button color="primary">Clear All</button>
+            <a style="float:inherit; color: rgb(36, 9, 79);" routerLink="/signup" routerLinkActive="active" id ="signup"><i>New user? Sign up Now!</i></a>
+        </mat-card-actions>
+    </mat-card>
+</form>

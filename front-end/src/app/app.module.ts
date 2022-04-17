@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
 import { RescheduleComponent } from './reschedule/reschedule.component';
 import { CancelComponent } from './cancel/cancel.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CancelComponent } from './cancel/cancel.component';
     TimelineComponent,
     PaymentComponent,
     RescheduleComponent,
-    CancelComponent
+    CancelComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
