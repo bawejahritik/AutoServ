@@ -25,6 +25,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ServicesComponent } from './services/services.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
+<<<<<<< Updated upstream
+=======
+import { TrackingPageComponent } from './tracking-page/tracking-page.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentComponent } from './payment/payment.component';
+import { RescheduleComponent } from './reschedule/reschedule.component';
+import { CancelComponent } from './cancel/cancel.component';
+import { SignupComponent } from './signup/signup.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -37,7 +47,17 @@ import { LoginComponent } from './login/login.component';
     TrackComponent,
     ServicesComponent,
     ContactUsComponent,
+<<<<<<< Updated upstream
     LoginComponent
+=======
+    LoginComponent,
+    TrackingPageComponent,
+    TimelineComponent,
+    PaymentComponent,
+    RescheduleComponent,
+    CancelComponent,
+    SignupComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

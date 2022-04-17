@@ -15,6 +15,11 @@ const routes: Routes = [
   { path: 'Services', component: ServicesComponent },
   { path: 'Contact-Us', component: ContactUsComponent },
   { path: 'Login', component: LoginComponent},
+<<<<<<< Updated upstream
+=======
+  { path: 'Tracking-page', component: TrackingPageComponent}
+  
+>>>>>>> Stashed changes
 ];
 
 @NgModule({

@@ -1,0 +1,32 @@
+<form class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Sign Up</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+                <div >
+                    <mat-form-field class="full-width">
+                        <input id="firstName" formControlName="firstName" matInput placeholder="First name">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="full-width">
+                        <input  id="lastName" formControlName="lastName" matInput placeholder="Last name">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="full-width">
+                        <input  id="phoneNumber" formControlName="phoneNumber" matInput placeholder="Phone Number">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="full-width">
+                        <input  id="email" formControlName="email" matInput placeholder="Email">
+                    </mat-form-field>
+                </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button id="submit" mat-raised-button color="primary">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
