@@ -34,3 +34,20 @@ func TestGetNonExistentTrackingID(t *testing.T) {
 		t.Fatalf("expected a %d, instead got: %d", want, got)
 	}
 }
+
+func TestGetExistingTrackingID(t *testing.T) {
+
+	var s ClientDetails
+
+	s.TrackingID = "381539592"
+	a.DB.Save(&s)
+
+	req, _ := http.NewRequest("GET", "http://localhost:8080/getClient?trackingID=381539592", nil)
+
+	w := httptest.NewRecorder()
+	a.r.ServeHTTP(w, req)
+
+	if want, got := http.StatusOK, w.Code; want != got {
+		t.Fatalf("expected a %d, instead got: %d", want, got)
+	}
+}
