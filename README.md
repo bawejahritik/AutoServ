@@ -1,40 +1,41 @@
 # AutoServ
 
-AutoServ is a user-friendly Automobile Service Management system which provides efficient means to schedule, track, manage and renumerate for motor services.
+<p align="center"><img src="https://github.com/bawejahritik/AutoServ/blob/main/front-end/src/assets/images/logo.jpeg"></p>
+AutoServ is a user-friendly Automobile Service Management system which provides efficient means to schedule, track, manage and renumerate for motor services. 
 
-### HomePage
+### :car: HomePage
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_HomePage.gif?raw=true">
 
-### Service Scheduling
+### :car: Service Scheduling
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ScheduleComponent_Demo.gif?raw=true">
 
-### Service Tracking
+### :car: Service Tracking
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/ServiceTracking.gif">
 
-### Service Rescheduling 
+### :car: Service Rescheduling 
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/RescheduleComponent_Demo.gif">
 
-### Service Cancelation 
+### :car: Service Cancelation 
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/CancelComponent_Demo.gif">
 
-### Service Page
+### :car: Service Page
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_ServicePage.png" height="348px" width="600px">
 
-### Login Page
+### :car: Login Page
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/LoginComponent_Demo.gif">
 
-### SignUp Page
+### :car: SignUp Page
 
 <img src="https://github.com/bawejahritik/AutoServ/blob/main/Demo/SignUpComponent_Demo.gif">
 
-### Installation
+### :car: Installation
 ```
 //Project clone
 git clone https://github.com/bawejahritik/AutoServ.git
@@ -52,7 +53,7 @@ cd front-end
 ng serve --open
 ```
 
-## Contributors
+## :car: Contributors
 
 | Name | GitHub ID |
 |------|-----------|
