@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="welcome">
+        <h2><strong>Welcome! {{userName | json}}</strong></h2>
+    </div>
+    <div style="align-items: center;"> 
+        <img class="user" src="assets/images/userimage.png">
+    </div>
+    <div class="button-row">
+        <button id="Schedule" mat-raised-button color="primary" routerLink="/AppointmentForm">Schedule</button>
+        <button id="Track" mat-raised-button routerLink="/Track">Track</button>
+    </div>
+</div>
+

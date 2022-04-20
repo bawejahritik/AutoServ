@@ -14,7 +14,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button id="submit" mat-raised-button color="primary">Submit</button>
+            <button (click)="onSubmit()" id="submit" mat-raised-button color="primary">Submit</button>
             <a style="float: right; color: rgb(36, 9, 79);" routerLink="/Signup" routerLinkActive="active"id ="signup"><i>New user? Sign up Now!</i></a>
         </mat-card-actions>
     </mat-card>

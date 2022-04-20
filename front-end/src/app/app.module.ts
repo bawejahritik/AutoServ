@@ -32,6 +32,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { RescheduleComponent } from './reschedule/reschedule.component';
 import { CancelComponent } from './cancel/cancel.component';
 import { SignupComponent } from './signup/signup.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SignupComponent } from './signup/signup.component';
     PaymentComponent,
     RescheduleComponent,
     CancelComponent,
-    SignupComponent
+    SignupComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
