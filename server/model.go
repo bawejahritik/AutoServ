@@ -21,3 +21,12 @@ type ClientDetails struct {
 	CreatedAt          time.Time
 	UpdatedAt          time.Time
 }
+
+type UserDetails struct {
+	gorm.Model
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	Password    string `json:"password"`
+	PhoneNumber string `json:"phoneNumber"`
+	Email       string `json:"email"`
+}

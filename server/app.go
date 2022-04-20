@@ -28,6 +28,7 @@ func (a *App) Initialize(dbDriver string, dbURI string) {
 	a.DB = db
 	// Migrate the schema.
 	a.DB.AutoMigrate(&ClientDetails{})
+	a.DB.AutoMigrate(&UserDetails{})
 	fmt.Println("initiated db")
 
 	a.r = mux.NewRouter()
@@ -155,7 +156,7 @@ func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
 	err := a.DB.Model(&client).Where("tracking_id = ?", s.TrackingID).Update("appointment_date", s.AppointmentDate).Error
 
 	if err != nil {
-		fmt.Println(err)
+		log.Fatalf("Error happened in find. Err: %s", err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -171,6 +172,27 @@ func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(jsonResp)
 
+}
+
+func (a *App) createUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var u UserDetails
+	err := json.NewDecoder(r.Body).Decode(&u)
+	if err != nil {
+		sendErr(w, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	a.DB.Save(&u)
+	resp := make(map[string]string)
+	resp["message"] = "Status Created"
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write(jsonResp)
 }
 
 func sendErr(w http.ResponseWriter, code int, message string) {
