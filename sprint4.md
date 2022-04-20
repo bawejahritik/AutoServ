@@ -26,3 +26,31 @@
   
 # Back-end
 
+# API 5: Registering a new user
+## POST Request
+
+This API takes in the user details of a new user and stores the user details in userdetails table
+
+## URL: http://localhost:8080/registerUser
+
+### Sample Request Body:
+![image](https://user-images.githubusercontent.com/53797247/164340928-bbd0b91e-1a65-48c7-bb17-54ae0fb07d66.png)
+
+### Sample Response Body: 
+![image](https://user-images.githubusercontent.com/53797247/164341010-3960f8bb-bfb5-4bf3-98b4-b93778cef677.png)
+
+# API 6: Checking a user
+## GET Request
+
+This API takes the firstname and the password of the user and checks it.
+
+## URL: http://localhost:8080/checkUser?firstname=firstname&password=temp
+
+### Sample Query Params:
+![image](https://user-images.githubusercontent.com/53797247/164341204-155d7a30-d636-40a2-bcad-5a266de20dbc.png)
+
+### Sample Response Body:
+![image](https://user-images.githubusercontent.com/53797247/164341253-d4cb41e9-0e37-4cd0-8207-46ae73902b00.png)
+
+
+
