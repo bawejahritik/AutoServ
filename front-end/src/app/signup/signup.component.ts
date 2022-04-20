@@ -9,6 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
+  alert:boolean=false;
   signupForm = this.formBuilder.group({
     firstName:['', Validators.required],
     lastName:['', Validators.required],
@@ -19,6 +20,10 @@ export class SignupComponent implements OnInit {
 
   onClear() {
     this.signupForm.reset();
+  }
+
+  onSubmit() {
+    this.alert=true;
   }
 
   ngOnInit(): void {

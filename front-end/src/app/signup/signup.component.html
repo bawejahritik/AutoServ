@@ -4,6 +4,9 @@
             <mat-card-title>Sign Up</mat-card-title>
         </mat-card-header>
         <mat-card-content>
+                <div *ngIf="alert" class="confirmation">
+                    <strong>Success!</strong> Signed up successfully.
+                </div>
                 <div >
                     <mat-form-field class="full-width">
                         <input id="firstName" formControlName="firstName" matInput placeholder="First name">
@@ -31,7 +34,7 @@
                 </div>
         </mat-card-content>
         <mat-card-actions>
-            <button id="submit" mat-raised-button color="primary">Submit</button>
+            <button (click)="onSubmit()" id="submit" mat-raised-button color="primary">Submit</button>
             <button (click)="onClear()" id="clear" mat-raised-button color="primary">Clear</button>
         </mat-card-actions>
     </mat-card>

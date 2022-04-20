@@ -7,3 +7,12 @@
     margin-left: 25vw;
     width: 50vw;
 }
+
+.confirmation {
+    padding: 10px;
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 5px;
+    background-color: #32CD32;
+    margin-bottom: 1rem;
+}
