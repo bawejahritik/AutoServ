@@ -9,9 +9,11 @@ https://user-images.githubusercontent.com/42437530/164353532-a7e4994e-651c-4bfb-
 
 ## Cypress Test Video
 
-https://user-images.githubusercontent.com/42437530/164364127-d3b0b3e1-7819-4ad2-a167-8ce13d08b371.mp4
+https://user-images.githubusercontent.com/42437530/164365546-599fe64d-7c0b-4c7f-ba5e-73fff6df5b4b.mp4
 
 ## Backend Unit Test Video
+
+https://user-images.githubusercontent.com/42437530/164364127-d3b0b3e1-7819-4ad2-a167-8ce13d08b371.mp4
 
 ## API Documentation
 
