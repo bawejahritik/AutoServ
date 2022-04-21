@@ -55,8 +55,6 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 	max := 5
 	temp := rand.Intn(max-min) + min
 	s.Status = strconv.Itoa(temp)
-	fmt.Println("tracking", s.TrackingID)
-	fmt.Println("status", s.Status)
 
 	a.DB.Save(&s)
 	resp := make(map[string]string)
@@ -74,12 +72,10 @@ func (a *App) CreateHandler(w http.ResponseWriter, r *http.Request) {
 func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	temp := r.URL.Query().Get("trackingID")
-	fmt.Println(temp)
 	var client ClientDetails
 	err := a.DB.Where("tracking_id = ?", temp).First(&client).Error
 
 	if err != nil {
-		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
 		resp := make(map[string]string)
 		resp["error"] = "Tracking ID not found"
@@ -90,8 +86,6 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 		w.Write(jsonResp)
 		return
 	}
-
-	fmt.Println(client.FirstName)
 
 	resp := make(map[string]string)
 	resp["firstname"] = client.FirstName
@@ -115,14 +109,12 @@ func (a *App) getClient(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) deleteClient(w http.ResponseWriter, r *http.Request) {
 	trackingID := r.URL.Query().Get("trackingID")
-	fmt.Println(trackingID)
 
 	var client ClientDetails
 
 	err := a.DB.Where("tracking_id = ?", trackingID).Delete(&client).Error
 
 	if err != nil {
-		fmt.Println(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -147,9 +139,6 @@ func (a *App) updateClient(w http.ResponseWriter, r *http.Request) {
 		sendErr(w, http.StatusBadRequest, e.Error())
 		return
 	}
-
-	fmt.Println("body", s.AppointmentDate)
-	fmt.Println("body tracking", s.TrackingID)
 
 	var client ClientDetails
 
