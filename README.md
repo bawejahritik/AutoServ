@@ -75,7 +75,13 @@ ng serve --open
  
 ## Tech Stack
 <ul>
-  <li>Frontend: Angular 11</li>
-  <li>Backend: Go</li>
-  <li>Database: SQLite</li>
+  <li> Frontend: Angular 11 </li>   url: https://angular.io
+  <p>Angular is a component based framework used for building scalable web applications.</p>
+    <p>Here we have used angular Material </p>  url: https://material.angular.io/
+  
+  <li>Backend: Go</li>    url: https://go.dev
+  <p>Golang makes it easy to build simple, reliable, and efficient software.</p>
+  
+  <li>Database: SQLite</li>   url: https://www.sqlite.org
+  <p> SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. </p>
 </ul>
