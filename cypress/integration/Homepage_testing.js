@@ -62,9 +62,4 @@ describe('The Home Page', () => {
       cy.get('a:contains("Track")').click()
     })
 
-    it('Successfully pressed Contact Us',()=>{
-      cy.wait(1000)
-      cy.get('a:contains("Contact Us")').click()
-  })
-
   })
