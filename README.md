@@ -1,7 +1,7 @@
 # AutoServ
 
 <p align="center"><img src="https://github.com/bawejahritik/AutoServ/blob/main/front-end/src/assets/images/logo.jpeg"></p>
-AutoServ is a user-friendly Automobile Service Management system which provides efficient means to schedule, track, manage and renumerate for motor services. 
+AutoServ is a user-friendly Automobile Service Management system which provides efficient means to schedule, track, manage and renumerate for motor services. The user can request a pickup/dropff for their vehicle. The user can reschedule a service appointment to a different date and the user can cancel a scheduled appointment.
 
 ## Project Demo
 
