@@ -23,6 +23,10 @@
 ### SignUp Component
 <p><em>New users can sign up into system by providing user details and setting Username and Password, allowing user login.</em></p>
 <p><img src="https://user-images.githubusercontent.com/42437530/164336299-50dd3bc1-4cdb-4d23-b3a6-12a260d17b0f.png"></p>
+
+### Cypress Testing
+
+<p><em>Integration testing for frontend: https://github.com/bawejahritik/AutoServ/blob/main/Demo/Frontend_CypressTest.mp4</em></p>
   
 # Back-end
 
