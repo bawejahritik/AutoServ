@@ -195,6 +195,44 @@ func (a *App) createUser(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResp)
 }
 
+func (a *App) checkUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	uname := r.URL.Query().Get("firstname")
+	pass := r.URL.Query().Get("password")
+
+	var user UserDetails
+	err := a.DB.Where("first_name = ?", uname).First(&user).Error
+
+	if err != nil {
+		fmt.Println(err)
+		w.WriteHeader(http.StatusBadRequest)
+		resp := make(map[string]string)
+		resp["error"] = "username not found"
+		jsonResp, err := json.Marshal(resp)
+		if err != nil {
+			log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+		}
+		w.Write(jsonResp)
+		return
+	}
+
+	resp := make(map[string]string)
+
+	if user.Password == pass {
+		resp["status"] = "valid"
+	} else {
+		resp["status"] = "invalid"
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
+
+}
+
 func sendErr(w http.ResponseWriter, code int, message string) {
 	resp, _ := json.Marshal(map[string]string{"error": message})
 	http.Error(w, string(resp), code)
