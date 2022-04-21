@@ -13,7 +13,7 @@ export class RescheduleComponent implements OnInit {
   alert:boolean=false;
   rescheduleForm = this.formBuilder.group({
     trackingID: ['', Validators.required],
-    appointmentDate: ['', Validators.required]
+    appointmentDate: ['']
   })
   
   reschedule() {
