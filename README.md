@@ -29,6 +29,8 @@ Sprint wise projects: <em>https://github.com/bawejahritik/AutoServ/projects</em>
 
 [Sprint 4](https://github.com/bawejahritik/AutoServ/blob/main/sprint4.md)
 
+
+--------
 ### :car: Installation
 ```
 //Project clone
@@ -69,13 +71,14 @@ start test.bat
 
 <dl>
   <dt>FrontEnd</dt>
-  <dd>
-    <li><em>Raghav Soni</em></li>
-    <li><em>Amisha Singhal</em</li>
+  <dd><em>
+    <li>Raghav Soni</li>
+    <li>Amisha Singhal</li>
   </dd>
   <dt>BackEnd</dt>
   <dd>
-    <li><em>Hritik Baweja</em></li>
+    <li>Hritik Baweja</li>
+    </em>
   </dd>
 </dl>
  
